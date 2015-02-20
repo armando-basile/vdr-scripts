@@ -1,2 +1,4 @@
 # vdr-scripts
-Scripts and tools to setup vdr from scratch
+Scripts and tools to setup vdr from scratch on linux os
+
+

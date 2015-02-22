@@ -116,6 +116,8 @@ mkdir -p /etc/vdr/plugins/loadepg
 mkdir -p /usr/local/share/vdr/plugins/skinnopacity
 mkdir -p /usr/local/share/vdr/plugins/tvguide
 
+# get default config files for vdr
+# get channels logo folder
 
 # set owner for vdr main folder
 chown -R "$VDRUSER:$VDRUSER" "/$VDRBOX_FOLDER"

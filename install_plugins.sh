@@ -7,6 +7,7 @@ VDRVER=2.2.0
 VDRBOX_FOLDER="vdrbox"
 VDRSRC="/$VDRBOX_FOLDER/vdr-$VDRVER/PLUGINS/src"
 VDRLIB="/$VDRBOX_FOLDER/vdr-$VDRVER/PLUGINS/lib"
+VDRMAIN="/$VDRBOX_FOLDER/vdr-$VDRVER"
 
 # dvb api plugin to manage oscam and softcam
 echo "copying libvdr-dvbapi.so.$VDRVER"
@@ -56,6 +57,17 @@ cp -f "$VDRSRC/tvguide/themes/*" /etc/vdr/themes/
 # loadepg config files
 echo "copying loadepg config files"
 cp -f "$VDRSRC/loadepg/conf/*" /etc/vdr/plugins/loadepg/
+
+# copy default vdr config files
+echo "copying vdr default config files"
+cp -f "$VDRMAIN/keymacros.conf" /etc/vdr/
+cp -f "$VDRMAIN/sources.conf" /etc/vdr/
+cp -f "$VDRMAIN/setup.conf" /etc/vdr/
+
+# update setup.conf for dvbapi
+echo "update setup.conf to use dvbapi"
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/conf/dvbapi.conf -O /tmp/dvbapi.conf
+cat /tmp/dvbapi.conf >> /etc/vdr/setup.conf
 
 
 

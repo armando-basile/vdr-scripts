@@ -8,6 +8,7 @@ VDRBOX_FOLDER="vdrbox"
 VDRSRC="/$VDRBOX_FOLDER/vdr-$VDRVER/PLUGINS/src"
 VDRLIB="/$VDRBOX_FOLDER/vdr-$VDRVER/PLUGINS/lib"
 VDRMAIN="/$VDRBOX_FOLDER/vdr-$VDRVER"
+PREVDIR=`pwd`
 
 # dvb api plugin to manage oscam and softcam
 echo "copying libvdr-dvbapi.so.$VDRVER"
@@ -41,7 +42,7 @@ cp -f "$VDRSRC/skinnopacity/libvdr-skinnopacity.so" "$VDRLIB/libvdr-skinnopacity
 echo "copying libvdr-skinflatplus.so.$VDRVER"
 cp -f "$VDRSRC/skinflatplus/libvdr-skinflatplus.so" "$VDRLIB/libvdr-skinflatplus.so.$VDRVER"
 
-# copy icons, themes and logos
+# copy icons, themes, config files and logos
 echo "copying skin nopacity icons"
 cp -rf "$VDRSRC/skinnopacity/icons" /usr/local/share/vdr/plugins/skinnopacity/
 echo "copying skin nopacity themes"
@@ -68,6 +69,10 @@ cp -f "$VDRMAIN/setup.conf" /etc/vdr/
 echo "update setup.conf to use dvbapi"
 wget -q https://github.com/armando-basile/vdr-scripts/raw/master/conf/dvbapi.conf -O /tmp/dvbapi.conf
 cat /tmp/dvbapi.conf >> /etc/vdr/setup.conf
+
+# return on previous folder
+cd $PREVDIR
+
 
 
 

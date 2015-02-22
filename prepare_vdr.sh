@@ -124,7 +124,8 @@ mkdir -p /usr/local/share/vdr/plugins/skinnopacity
 mkdir -p /usr/local/share/vdr/plugins/tvguide
 
 # get default config files for vdr
-
+echo -e  "\nget remote.conf file for remote key mapping"
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/conf/remote.conf -O /etc/vdr/remote.conf
 
 # get channels logo folder
 if [ ! -d "/usr/local/share/vdr/plugins/skinnopacity/logos" ]; then

@@ -6,7 +6,7 @@
 # release to checkout
 VDRVER=2.2.0
 VDRBOX_FOLDER="vdrbox"
-
+VDRUSER="mediacenter"
 
 # detect if is superuser
 if [[ $EUID -ne 0 ]]; then
@@ -28,6 +28,7 @@ fi
 
 # move into folder
 cd "/$VDRBOX_FOLDER"
+
 
 # get vdr into specific folder
 echo -e "checking for /$VDRBOX_FOLDER/vdr-$VDRVER folder presence" 
@@ -93,6 +94,31 @@ if [ ! -d "femon" ]; then
     tar xf vdr-femon-2.2.0.tgz
     mv femon-2.2.0 femon
 fi
+
+# return on main folder
+cd "/$VDRBOX_FOLDER"
+
+# get vdr and oscam start/stop scripts
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/oscam-start.sh -O oscam-start.sh
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/oscam-stop.sh -O oscam-stop.sh
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/vdr-start.sh -O vdr-start.sh
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/vdr-stop.sh -O vdr-stop.sh
+chmod 775 oscam-start.sh
+chmod 775 oscam-stop.sh
+chmod 775 vdr-start.sh
+chmod 775 vdr-stop.sh
+
+
+# create vdr config files folders
+mkdir -p /etc/vdr/themes
+mkdir -p /etc/vdr/plugins/skinnopacity/themeconfigs
+mkdir -p /etc/vdr/plugins/loadepg
+mkdir -p /usr/local/share/vdr/plugins/skinnopacity
+mkdir -p /usr/local/share/vdr/plugins/tvguide
+
+
+# set owner for vdr main folder
+chown -R "$VDRUSER:$VDRUSER" "/$VDRBOX_FOLDER"
 
 echo -e "\n\nReady to build, go to /$VDRBOX_FOLDER/vdr-$VDRVER folder and launch make\n"
 

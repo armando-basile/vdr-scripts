@@ -117,7 +117,11 @@ mkdir -p /usr/local/share/vdr/plugins/skinnopacity
 mkdir -p /usr/local/share/vdr/plugins/tvguide
 
 # get default config files for vdr
+
+
 # get channels logo folder
+echo -e "\nget channels logos from 3PO/Senderlogos git"
+git clone https://github.com/3PO/Senderlogos /usr/local/share/vdr/plugins/skinnopacity/logos
 
 # set owner for vdr main folder
 chown -R "$VDRUSER:$VDRUSER" "/$VDRBOX_FOLDER"

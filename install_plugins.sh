@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Script to install libraries and config files after build of VDR
 # rel. 0.1.0

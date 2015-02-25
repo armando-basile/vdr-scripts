@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Script for VDR environment preparation
 # rel. 0.1.0
@@ -73,7 +74,6 @@ if [ ! -d "tvguide" ]; then
     echo -e  "\nget tvguide plugin from git"
     git clone git://projects.vdr-developer.org/vdr-plugin-tvguide.git tvguide
     # set to use graphicsmagick instead imagemagick
-    #there is some problem at runtime using graphicsmagick, so for now using imagemagick
     sed -i 's/IMAGELIB = imagemagick/IMAGELIB = graphicsmagick/g' tvguide/Makefile
 fi
 
@@ -109,10 +109,13 @@ echo -e  "vdr-start.sh"
 wget -q https://github.com/armando-basile/vdr-scripts/raw/master/vdr-start.sh -O vdr-start.sh
 echo -e  "vdr-stop.sh"
 wget -q https://github.com/armando-basile/vdr-scripts/raw/master/vdr-stop.sh -O vdr-stop.sh
+echo -e  "vdr-run.sh"
+wget -q https://github.com/armando-basile/vdr-scripts/raw/master/vdr-run.sh -O vdr-run.sh
 chmod 775 oscam-start.sh
 chmod 775 oscam-stop.sh
 chmod 775 vdr-start.sh
 chmod 775 vdr-stop.sh
+chmod 775 vdr-run.sh
 
 
 # create vdr config files folders

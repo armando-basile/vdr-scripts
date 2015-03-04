@@ -15,3 +15,7 @@ Goal of this project is keep up-to-date our VDR environment including plugins, s
 To use oscam with dvbapi you need to install also oscam and update vdr-start and vdr-stop scripts
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/armando-basile/vdr-scripts/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
